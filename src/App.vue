@@ -7,6 +7,16 @@
       :width="600"
       :height="400"
       :items="[
+      {
+           thumbnail: 'https://picsum.photos/64/64/?image=0',
+           video: {
+              src: 'http://techslides.com/demos/sample-videos/small.mp4',
+              type: 'video/mp4',
+              autoplay: true,
+              controls: true,
+              muted: false,
+            },
+        },
         {
           src: 'https://picsum.photos/600/600/?image=0',
           alt: 'Some alt text',
@@ -29,16 +39,6 @@
               media: '(min-width: 1200px)'
             }
           ]
-        },
-        {
-           thumbnail: 'https://picsum.photos/64/64/?image=0',
-           video: {
-              src: 'http://techslides.com/demos/sample-videos/small.mp4',
-              type: 'video/mp4',
-              autoplay: true,
-              controls: true,
-              muted: false,
-            },
         },
         {
           src: 'https://picsum.photos/2000/1200/?image=10',

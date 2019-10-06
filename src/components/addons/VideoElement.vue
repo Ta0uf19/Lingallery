@@ -35,6 +35,6 @@
     /* responsive */
     video {
         max-width: 100%;
-        height: auto;
+        height: 95%;
     }
 </style>

@@ -139,7 +139,7 @@ export default {
       currentCaption: '',
       currentAlt: '',
       windowWidth: 0,
-      isLoading: true,
+      isLoading: false,
       showLargeView: false
     }
   },
