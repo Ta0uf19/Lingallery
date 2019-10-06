@@ -32,5 +32,9 @@
 </script>
 
 <style scoped>
-
+    /* responsive */
+    video {
+        max-width: 100%;
+        height: auto;
+    }
 </style>
