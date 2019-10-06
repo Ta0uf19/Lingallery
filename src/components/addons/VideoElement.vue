@@ -1,5 +1,5 @@
 <template>
-    <video :controls="item.video.controls" :autoplay="item.video.autoplay" :muted="item.video.muted">
+    <video class="awesome-video" :controls="item.video.controls" :autoplay="item.video.autoplay" :muted="item.video.muted">
         <source
                 :src="item.video.src"
                 :type="item.video.type ? item.video.type : false"
@@ -31,9 +31,9 @@
     }
 </script>
 
-<style scoped>
+<style>
     /* responsive */
-    video {
+    .awesome-video {
         max-width: 100%;
         height: 95%;
     }
