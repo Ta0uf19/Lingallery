@@ -4,12 +4,10 @@
     <a href="https://www.npmjs.com/package/lingallery"><img src="https://img.shields.io/npm/l/lingallery.svg?style=flat-square" alt="License"></a>
 </p>
 
-# Lingallery
-Lingallery is a simple image gallery component for Vue.js. It displays a large image with thumbnails below as you can see in the demo. You can define several settings to adapt the gallery to your needs.
-
-Since Lingallery is at an **early development state** be carefull when using it in a production project.
+# Lingallery + Video Addons
+This is a fork of Lingallery with video addons
 ## Demo
-<img src="https://lingulo.com/snippet-content/lingallery/lingallery_screenshot.png">
+<img src="https://i.imgur.com/dpsLhVi.png">
 <br><br>
 Check out the live demo here: <a href="https://lingulo.com/snippet-content/lingallery/" target="_blank">https://lingulo.com/snippet-content/lingallery/</a>
 
@@ -20,76 +18,28 @@ npm i lingallery
 ```
 
 ## Usage
-
-Here are some examples of how to use Lingallery in a `.vue` file component or inline. 
-
-### Inline usage
-
-You can use it inline:
-
-```html
-<lingallery :iid.sync="currentId" :width="600" :height="400" :items="[
-    {id:'someid1', src: 'https://picsum.photos/600/400/?image=0', thumbnail: 'https://picsum.photos/64/64/?image=0', alt: 'Some alt text', caption: 'Some Caption'},
-    {id:'someid2', src: 'https://picsum.photos/600/400/?image=10', thumbnail: 'https://picsum.photos/64/64/?image=10', alt: 'Another alt text', caption: 'Another Caption'},
-    {id:'someid3', src: 'https://picsum.photos/400/600/?image=20', thumbnail: 'https://picsum.photos/64/64/?image=20'}
-]"/>
-```
-
-Remember to register the component:
-
+ Be sure to enable the addon by setting enableVideoElement: true in the addons object
 ```javascript
-import Lingallery from 'lingallery';
-Vue.component('lingallery', Lingallery);
+<lingallery
+      :mobile-height="300"
+      :mobile-height-breakpoint="600"
+      :addons="{ enableLargeView: true, enablePictureElement: false, enableVideoElement: true  }"
+      :width="600"
+      :height="400"
+      :items="[{
+           thumbnail: 'https://picsum.photos/64/64/?image=0',
+           video: {
+              src: 'http://techslides.com/demos/sample-videos/small.mp4',
+              type: 'video/mp4',
+              autoplay: true, // required
+              controls: true, // required
+              muted: false, // required
+           }
+    }]"
 
-new Vue({
-  el: '#app'
-})
+/>
 ```
 
-### Usage in another component
-
-Create a component `Example.vue` and add this:
-
-```vue
-<template>
-  <lingallery :iid.sync="currentId" :width="width" :height="height" :items="items"/>
-</template>
-<script>
-  import Lingallery from 'lingallery';
-  export default {
-    data() {
-      return {
-        width: 600,
-        height: 400,
-        items: [{
-          src: 'https://picsum.photos/600/400/?image=0',
-          thumbnail: 'https://picsum.photos/64/64/?image=0',
-          caption: 'Some Caption',
-          id: 'someid1'
-        },
-        {
-          src: 'https://picsum.photos/600/400/?image=10',
-          thumbnail: 'https://picsum.photos/64/64/?image=10'
-        },
-        currentId: null
-      ]};
-    },
-    components: {
-      Lingallery
-    }
-  }
-</script>
-```
-
-### Usage with Nuxt.js
-
-Since Lingallery uses features that are available only in the browser make sure to start rendering the component in a hook that is not running on the server like `mounted ()` or to add Lingallery as a plugin with disabled SSR:
-
-```javascript
-plugins: {
-  { src: '~/plugins/lingallery', ssr: false }
-}
-```
 
 ### Lingallery options
 
@@ -111,11 +61,7 @@ You can pass some props to adapt the behavior and looks of Lingallery.
 | `rightControlClass` | If defined adds a class to the right control button to enable custom icons | '' | String |
 | `disableImageClick` | If set to true a click on the large image will not show the next image | false | Boolean |
 
-## Lingallery addons
-
-I am planning on creating several additional features. Since I try to keep the basic plugin as small as possible those addons will not be part of Lingallery by default. To enable an addon you explicitly have to pass an object prop "addons" to Lingallery containing all the addons you would like to activate as well as their options.
-
-Here is a list of currently existing addons:
+## Another addons
 
 ### Large View
 By passing the prop `enableLargeView` you can enable the large view feature. When clicking on the large main image a modal will open up with the image displaying in full size.
