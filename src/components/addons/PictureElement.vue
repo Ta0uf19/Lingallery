@@ -8,13 +8,13 @@
       :type="item.type ? item.type : false"
     />
     <img
-      :src="items[currentIndex].src"
-      :alt="items[currentIndex].alt"
-      :style="mainImageStyle"
-      :class="{ loading: isLoading }"
-      @click="handleLargeImageClick"
-      @load="handleImageLoaded"
-      v-swipe="handleImageSwipe"
+            :src="items[currentIndex].src"
+            :alt="items[currentIndex].alt"
+            :style="mainImageStyle"
+            :class="{ loading: isLoading }"
+            @click="handleLargeImageClick"
+            @load="handleImageLoaded"
+            v-swipe="handleImageSwipe"
     />
   </picture>
 </template>

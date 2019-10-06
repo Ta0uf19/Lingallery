@@ -3,7 +3,7 @@
     <lingallery
       :mobile-height="300"
       :mobile-height-breakpoint="600"
-      :addons="{ enableLargeView: true, enablePictureElement: true }"
+      :addons="{ enableLargeView: true, enablePictureElement: false, enableVideoElement: true  }"
       :width="600"
       :height="400"
       :items="[
@@ -29,6 +29,16 @@
               media: '(min-width: 1200px)'
             }
           ]
+        },
+        {
+           thumbnail: 'https://picsum.photos/64/64/?image=0',
+           video: {
+              src: 'http://techslides.com/demos/sample-videos/small.mp4',
+              type: 'video/mp4',
+              autoplay: true,
+              controls: true,
+              muted: false,
+            },
         },
         {
           src: 'https://picsum.photos/2000/1200/?image=10',

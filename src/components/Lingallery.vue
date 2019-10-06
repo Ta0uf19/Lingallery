@@ -22,6 +22,11 @@
             v-if="isLoading"
           />
         </div>
+        <video-element
+          v-if="addons.enableVideoElement && items[currentIndex]['video'] !== undefined"
+          :item="items[currentIndex]"
+          :current-index="currentIndex"
+        />
         <picture-element
           v-if="addons.enablePictureElement"
           :alt="currentAlt"
@@ -35,7 +40,7 @@
           @handle-image-loaded="handleImageLoaded"
         />
         <img
-          v-else
+          v-if="!addons.enablePictureElement && !(addons.enableVideoElement && items[currentIndex]['video'] !== undefined)"
           :alt="currentAlt"
           :class="{ loading: isLoading }"
           :src="currentImage"
@@ -266,11 +271,11 @@ export default {
         return this.windowWidth > this.width && !this.responsive
           ? 'width:' + this.width + 'px;height:' + this.height + 'px'
           : 'width:100%;height:auto'
-    }
+    },
   },
   methods: {
     initLingallery() {
-      this.currentImage = this.items[this.startImage].src
+      this.currentImage = this.items[this.startImage].src;
       this.currentCaption = this.items[this.startImage].caption
       this.currentId = this.items[this.startImage].id
       this.currentIndex = this.startImage
@@ -315,8 +320,10 @@ export default {
       this.isLoading = isLoading
     },
     pickImage(index) {
-      // Show Loader
-      this.handleLoader(true)
+      // Show Loader if is not a video
+      if(!this.isVideo()) {
+        this.handleLoader(true);
+      }
 
       this.currentImage = this.items[index].src
       this.currentCaption = this.items[index].hasOwnProperty('caption')
@@ -340,8 +347,10 @@ export default {
       this.$emit('update:iid', this.currentId)
     },
     showNextImage() {
-      // Show Loader
-      this.handleLoader(true)
+      // Show Loader if is not a video
+      if(!this.isVideo()) {
+        this.handleLoader(true);
+      }
 
       if (this.items.length > this.currentIndex + 1) {
         this.currentIndex = this.currentIndex + 1
@@ -352,8 +361,10 @@ export default {
       this.pickImage(this.currentIndex)
     },
     showPreviousImage() {
-      // Show Loader
-      this.handleLoader(true)
+      // Show Loader if is not a video
+      if(!this.isVideo()) {
+        this.handleLoader(true);
+      }
 
       if (this.currentIndex !== 0) {
         this.currentIndex = this.currentIndex - 1
@@ -362,6 +373,10 @@ export default {
       }
 
       this.pickImage(this.currentIndex)
+    },
+    isVideo() {
+      return this.addons.enableVideoElement
+              && this.items[this.currentIndex]['video'] !== undefined
     }
   },
   created() {
