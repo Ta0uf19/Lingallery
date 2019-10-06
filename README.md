@@ -16,12 +16,12 @@ npm i ta0uf19/lingallery
 ```
 
 ## Usage
- Be sure to enable the addon by setting enableVideoElement: true in the addons object
+ Be sure to enable the addon by setting **enableVideoElement: true** in the addons object
 ```javascript
 <lingallery
       :mobile-height="300"
       :mobile-height-breakpoint="600"
-      :addons="{ enableLargeView: true, enablePictureElement: false, enableVideoElement: true  }"
+      :addons="{ enableVideoElement: true  }"
       :width="600"
       :height="400"
       :items="[{
