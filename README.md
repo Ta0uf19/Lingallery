@@ -9,12 +9,10 @@ This is a fork of Lingallery with video addons
 ## Demo
 <img src="https://i.imgur.com/dpsLhVi.png">
 <br><br>
-Check out the live demo here: <a href="https://lingulo.com/snippet-content/lingallery/" target="_blank">https://lingulo.com/snippet-content/lingallery/</a>
-
 ## Install
 
 ```bash
-npm i lingallery
+npm i ta0uf19/lingallery
 ```
 
 ## Usage
